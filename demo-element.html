@@ -1,0 +1,42 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+
+<dom-module id="demo-element">
+
+  <template>
+    <style>
+       :host {
+        font-family: sans-serif;
+      }
+    </style>
+
+    <h3>Statically-configured icons-toggles</h3>
+
+    <icon-toggle toggle-icon="star"></icon-toggle>
+    <icon-toggle toggle-icon="star" pressed></icon-toggle>
+
+    <h3>Dynamically-configured icons-toggles</h3>
+
+    <div><span>[[_message(isFav)]]</span></div>
+
+    <icon-toggle toggle-icon "favourite" pressed="{{isFav}}"></icon-toggle>
+  </template>
+
+  <script>
+    class DemoElement extends Polymer.Element {
+
+      static get is() {
+        return "demo-element";
+      }
+
+      _message(fav) {
+        if (fav) {
+          return "You really like me!";
+        } else {
+          return "Do you like me?";
+        }
+      }
+    }
+    customElements.define(DemoElement.is, DemoElement);
+  </script>
+
+</dom-module>
